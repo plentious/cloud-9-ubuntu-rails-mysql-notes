@@ -1,4 +1,4 @@
-# cloud-9-ubuntu-rails-mysql-notes
+# cloud9-ubuntu-rails-mysql-notes
 These are just notes to try to minimize the head scratching the next time I want to create an application in rails using mysql on cloud9 ubuntu
 
 These are by no means best practices, but rather just the notes of how a total nube got things to work.  By "getting things to work" I mean the behavior was consistent with the Ruby on Rails 5 Essential Training course on Lynda.com
