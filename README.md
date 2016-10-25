@@ -3,15 +3,15 @@ These are just notes to try to minimize the head scratching the next time I want
 
 These are by no means best practices, but rather just the notes of how a total nube got things to work.  By "getting things to work" I mean the behavior was consistent with the Ruby on Rails 5 Essential Training course on Lynda.com
 
-At first I created a Cloud9 workspace by selecting a ruby on rails installation.  That proved to be painful because by default the database used is SQLite rather than MySQL and it used an older version of rails.  I tried to backtrack and change the database.yml file along with other settings but I could never get things to work.  I decided to create a new ubuntu only workspace and then used the folowing site to install rails with MySQL.
+At first I created a Cloud9 workspace by selecting a ruby on rails installation.  That proved to be painful because by default the database used is SQLite rather than MySQL, and it used an older version of rails.  I tried to backtrack and change the database.yml file along with other settings, but I could never get things to work.  I decided to create a new ubuntu only workspace and then used the following site to install rails with MySQL.
 
 https://community.c9.io/t/running-a-rails-app/1615
 
-The most important things I learned here were (1) to specify MYSQL as the database in step 2 when creating a new rails project/app and (2) to specify the environment variables of $PORT and $IP when launching the webserver.
+The most important things I learned on this page were (1) to specify MYSQL as the database in step 2 when creating a new rails project/app and (2) to specify the environment variables of $PORT and $IP when launching the webserver.
 
-At this point I wasted a great deal of time trying to figure out why I could not even connect to my application via browser.
+At this point, I wasted a great deal of time trying to figure out why I could not even connect to my application via browser.  In other words, I could not get to any of the pages in my public folder let alone any of the views from within the rails framework.
 
-I would get long server logs and I keyed in on this error:
+I would get long server logs and I focused mainly on this error:
 #<Mysql2::Error: Can\t connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (111)>'
 
 I spent a ridiculous amount of time trying to find these socket files in my rails project, trying to see if mysql was installed and running, etc.
@@ -29,6 +29,10 @@ $ mysql -usomeusername -p
 mysql> SHOW DATABASES;
 
 Once I ran this I realized that the databases identified in my database.yml file had not been created in my new instance of MySQL.
+
+Much later I went back and saw this buried in the server logs:
+
+#<ActiveRecord::NoDatabaseError: Unknown database 'example_development'>
 
 I then went back to the earlier chapters in the Lynda tutorial to redo the database set ups.
 
