@@ -54,7 +54,36 @@ mysql> exit
 
 I then went back to the database.yml file to ensure the development and test databases shown there had the correct names and to change the default username and password settings to require this user to login for access.
 
+DAILY COMMANDS to run when you start each morning (or after a long pause where the server and database may have timed out:
 
+1. In the terminal make sure you are in the root folder of your project before trying to pass any commands.
+2. Easiest way to check if the server is running is to try to get to one of your pages.  If you have left one of them open the night before just try to refresh it.  Once you know the server is not running, pass the following command in the terminal to restart the server:
 
+    $ rails server -p $PORT -b$IP 
+    
+3. Open a new terminal window and navigate to your projects root folder (You will want to keep the other open to review server logs) and check the status of the MYSQL database:
+
+    $ mysqladmin status -u YourUserId -p
+
+If the database is not running you will get something like this:
+
+    mysqladmin: connect to server at 'localhost' failed
+error: 'Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (111)'
+Check that mysqld is running and that the socket: '/var/run/mysqld/mysqld.sock' exists!
+
+4. To start the database, 
+
+    $ mysql-ctl start
+    
+    This should give you the following:
+    
+     * Starting MySQL database server mysqld
+   ...done.
+ * Checking for tables which need an upgrade, are corrupt or were 
+not closed cleanly.
+
+5. Log in to the database:
+
+    $  mysql -u YourUserId -p
 
 
