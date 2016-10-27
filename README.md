@@ -82,8 +82,11 @@ Check that mysqld is running and that the socket: '/var/run/mysqld/mysqld.sock' 
  * Checking for tables which need an upgrade, are corrupt or were 
 not closed cleanly.
 
-5. Log in to the database:
+This cloud9 community topic is where I found the above command to start the database.
+https://community.c9.io/t/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run-mysqld-mysqld-sock-111/2209
 
-    $  mysql -u YourUserId -p
+5. Log in to the database. It is best if you specify the database after the "-p" in the below command:
+
+    $  mysql -u YourUserId -p example_development
 
 
